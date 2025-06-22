@@ -3,7 +3,6 @@ import java.util.Map;
 
 public class Student {
     private Map<Class, Double> grades = new HashMap<>();
-    private int grade;
     private int abscences;
 
 }
