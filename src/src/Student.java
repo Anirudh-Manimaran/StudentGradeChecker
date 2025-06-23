@@ -1,6 +1,6 @@
 /**
- * @Anirudh Manimaran
- * @Version 2.0
+ * @author  Anirudh Manimaran
+ * @version 2.0
  * Class to represent a Student in the grade accessor.
  */
 
