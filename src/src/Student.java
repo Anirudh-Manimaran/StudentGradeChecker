@@ -1,8 +1,72 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class Student {
-    private Map<Class, Double> grades = new HashMap<>();
-    private int abscences;
 
+public class Student {
+    private final String name;
+    private Map<String, Class> classes = new HashMap<>();
+    private int absences;
+
+    public Student(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Map<String, Class> getClasses() {
+        return classes;
+    }
+
+    public void addClass(Class course) {
+        classes.put(course.getName(), course);
+    }
+
+    public void removeClass(String className) {
+        classes.remove(className);
+    }
+
+    public Class getClassByName(String className) {
+        return classes.get(className);
+    }
+
+    public int getAbsences() {
+        return absences;
+    }
+
+    public void setAbsences(int absences) {
+        this.absences = absences;
+    }
+
+    public void incrementAbsence() {
+        this.absences++;
+    }
+
+    public double getTermGPA() {
+        if (classes.isEmpty()) return Double.NaN;
+        double sum = 0;
+        int count = 0;
+        for (Class x : classes.values()) {
+            double grade = x.totalGrade();
+            if (!Double.isNaN(grade)) {
+                sum += percentageToGPA(grade);
+                count++;
+            }
+        }
+        return count == 0 ? Double.NaN : sum / count;
+    }
+
+    private double percentageToGPA(double percentage) {
+        if (percentage >= 90) return 4.0;
+        else if (percentage >= 80) return 3.0;
+        else if (percentage >= 70) return 2.0;
+        else if (percentage >= 60) return 1.0;
+        return 0.0;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{name='" + name + "', absences=" + absences + ", Term GPA=" + getTermGPA() + "}";
+    }
 }
