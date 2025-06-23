@@ -1,3 +1,5 @@
+Project 7:
+
 # StudentGradeChecker
 
 A simple, quick Java application for tracking student grades, classes, assignments, and absences. Made to quickly refresh knowledge on OOP and Java. Used Copilot only to speed-run the Main file, due to simple yet repetitive lines of code.
