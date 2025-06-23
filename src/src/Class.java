@@ -1,3 +1,9 @@
+/**
+ * @Anirudh Manimaran
+ * @Version 2.0
+ * Class to represent a class in the grade accessor.
+ */
+
 import java.util.HashMap;
 import java.util.Map;
 

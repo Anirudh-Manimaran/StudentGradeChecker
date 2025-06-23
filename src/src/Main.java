@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter student name: ");
+        System.out.print("Enter student: ");
         String studentName = scanner.nextLine();
         Student student = new Student(studentName);
         boolean cycle = true;
@@ -30,16 +30,16 @@ public class Main {
 
             if (choice == 1) {
                 System.out.print("Class name: ");
-                String className = scanner.nextLine();
+                String name = scanner.nextLine();
                 System.out.print("Class description: ");
                 String description = scanner.nextLine();
-                student.addClass(new Class(className, description));
+                student.addClass(new Class(name, description));
                 System.out.println("Class added.");
             } else if (choice == 2) {
                 System.out.print("Class name: ");
-                String className = scanner.nextLine();
-                Class c = student.getClassByName(className);
-                if (c == null) {
+                String name = scanner.nextLine();
+                Class x = student.getClassByName(name);
+                if (x == null) {
                     System.out.println("Class not found");
                     continue;
                 }
@@ -49,13 +49,13 @@ public class Main {
                 double grade = Double.parseDouble(scanner.nextLine());
                 System.out.print("Weight: ");
                 double weight = Double.parseDouble(scanner.nextLine());
-                c.addAssignment(assignment, new Double[]{grade, weight});
+                x.addAssignment(assignment, new Double[]{grade, weight});
                 System.out.println("Assignment added.");
             } else if (choice == 3) {
                 System.out.print("Class name: ");
-                String className = scanner.nextLine();
-                Class c = student.getClassByName(className);
-                if (c == null) {
+                String name = scanner.nextLine();
+                Class x = student.getClassByName(name);
+                if (x == null) {
                     System.out.println("Class not found");
                     continue;
                 }
@@ -65,39 +65,38 @@ public class Main {
                 double grade = Double.parseDouble(scanner.nextLine());
                 System.out.print("New weight: ");
                 double weight = Double.parseDouble(scanner.nextLine());
-                c.editAssignment(assignment, new Double[]{grade, weight});
+                x.editAssignment(assignment, new Double[]{grade, weight});
                 System.out.println("Assignment updated");
             } else if (choice == 4) {
                 System.out.print("Class name: ");
-                String className = scanner.nextLine();
-                Class c = student.getClassByName(className);
-                if (c == null) {
+                String name = scanner.nextLine();
+                Class x = student.getClassByName(name);
+                if (x == null) {
                     System.out.println("Class not found");
                     continue;
                 }
                 System.out.print("Assignment name: ");
                 String assignment = scanner.nextLine();
-                c.removeAssignment(assignment);
+                x.removeAssignment(assignment);
                 System.out.println("Assignment removed");
             } else if (choice == 5) {
-                student.incrementAbsence();
-                System.out.println("Absence incremented");
+                student.addAbsences();
+                System.out.println("Absence added");
             } else if (choice == 6) {
                 System.out.println(student);
             } else if (choice == 7) {
-                for (Class c : student.getClasses().values()) {
-                    System.out.println(c);
-                    System.out.println(c.viewAssignments());
-                    System.out.println("Total Grade: " + c.totalGrade());
+                for (Class x : student.getClasses().values()) {
+                    System.out.println(x);
+                    System.out.println(x.viewAssignments());
+                    System.out.println("Total Grade: " + x.totalGrade());
                 }
             } else if (choice == 8) {
-                System.out.println("Exiting");
+                System.out.println("Finished");
                 cycle = false;
 
             } else {
                 System.out.println("Invalid choice");
             }
         }
-        scanner.close();
     }
 }
