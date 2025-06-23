@@ -1,3 +1,9 @@
+/**
+ * @Anirudh Manimaran
+ * @Version 2.0
+ * Class to represent a Student in the grade accessor.
+ */
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,7 +45,7 @@ public class Student {
         this.absences = absences;
     }
 
-    public void incrementAbsence() {
+    public void addAbsences() {
         this.absences++;
     }
 
@@ -54,15 +60,29 @@ public class Student {
                 count++;
             }
         }
-        return count == 0 ? Double.NaN : sum / count;
+        if(count == 0){
+            return Double.NaN;
+        }
+        else{
+            return sum / count;
+        }
     }
 
     private double percentageToGPA(double percentage) {
-        if (percentage >= 90) return 4.0;
-        else if (percentage >= 80) return 3.0;
-        else if (percentage >= 70) return 2.0;
-        else if (percentage >= 60) return 1.0;
-        return 0.0;
+        if (percentage >= 90){
+            return 4;
+        }
+        else if (percentage >= 80){
+            return 3;
+        }
+        else if (percentage >= 70){
+            return 2;
+        }
+        else if (percentage >= 60){
+            return 1;
+        }
+        return 0;
+
     }
 
     @Override
